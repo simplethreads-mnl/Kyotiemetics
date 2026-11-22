@@ -30,6 +30,7 @@ body.owner { background: #fbf6f3; }
 .mini { list-style: none; padding: 0; margin: 0 0 .6rem; }
 .mini li { display: grid; grid-template-columns: 40px 1fr auto; gap: .7rem; align-items: center; padding: .35rem 0; border-bottom: 1px dashed var(--line); font-size: .93rem; }
 .mini-art { width: 40px; height: 40px; border-radius: 10px; background: var(--pink-soft); padding: 3px; display: block; overflow: hidden; }
+.mini-art:has(img), .pe-preview:has(img) { padding: 0; }
 .mini-art img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
 .warn { color: #9a6200; }
 .bad { color: var(--bad); }
@@ -87,7 +88,7 @@ body.owner { background: #fbf6f3; }
 .pe-art { display: flex; flex-direction: column; gap: .6rem; }
 .pe-preview { aspect-ratio: 1; border-radius: 20px; background: radial-gradient(circle at 50% 42%, #fff 0 30%, transparent 62%), var(--pink-soft); padding: 10%; display: grid; place-items: center; overflow: hidden; }
 .pe-preview svg, .pe-preview img { width: 100%; height: 100%; object-fit: contain; }
-.pe-preview img { object-fit: cover; border-radius: 14px; }
+.pe-preview img { object-fit: cover; border-radius: 0; }
 .upload input { font-size: .85rem; padding: .4rem; }
 details summary { cursor: pointer; font-weight: 700; font-size: .9rem; margin-bottom: .4rem; }
 details label { margin-bottom: .5rem; }
