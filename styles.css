@@ -113,7 +113,8 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
 .card-art { position: relative; display: block; width: 100%; aspect-ratio: 1; padding: 10%; border: 0; cursor: pointer; background: radial-gradient(circle at 50% 42%, #fff 0 30%, transparent 62%), var(--tile, var(--pink-soft)); }
 .card-art svg, .card-art img { width: 100%; height: 100%; object-fit: contain; }
-.card-art img { object-fit: cover; border-radius: 14px; }
+.card-art:has(img), .pview-art:has(img), .line-art:has(img) { padding: 0; }
+.card-art img { object-fit: cover; border-radius: 0; }
 .card-art::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 12%; background: linear-gradient(transparent, rgba(255, 255, 255, .55)); }
 .sticker { position: absolute; top: 10px; right: 10px; z-index: 1; width: 52px; height: 52px; border-radius: 50%; display: grid; place-items: center; background: var(--butter); font-family: var(--head); font-weight: 700; font-size: .95rem; transform: rotate(12deg); box-shadow: 0 4px 10px -4px rgba(0, 0, 0, .25); border: 2px dashed #e8b94a; }
 .sticker.big { width: 70px; height: 70px; font-size: 1.2rem; }
@@ -191,7 +192,7 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .pview { display: grid; grid-template-columns: 1fr 1fr; }
 .pview-art { position: relative; background: radial-gradient(circle at 50% 42%, #fff 0 30%, transparent 62%), var(--tile); padding: 10%; display: grid; place-items: center; }
 .pview-art svg, .pview-art img { width: 100%; }
-.pview-art img { border-radius: 18px; }
+.pview-art img { border-radius: 0; height: 100%; object-fit: cover; }
 .pview-info { padding: 2rem 1.6rem; display: flex; flex-direction: column; gap: .4rem; }
 .pview-info h2 { font-size: 1.8rem; padding-right: 2.5rem; }
 .facts { padding-left: 1.1rem; color: var(--ink-soft); margin: .2rem 0 1rem; }
