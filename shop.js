@@ -23,7 +23,7 @@
       '<text x="96" y="30" font-family="Fredoka, sans-serif" font-size="16" fill="#b79ce8">z</text><text x="108" y="18" font-family="Fredoka, sans-serif" font-size="12" fill="#b79ce8">z</text></svg>';
   }
   function heroShelf() {
-    var pick = ['p1', 'p7', 'p15'].map(function (id) { return K.byId(S, id); }).filter(Boolean);
+    var pick = ['p1', 'p3', 'p21'].map(function (id) { return K.byId(S, id); }).filter(Boolean);
     $('#heroShelf').innerHTML =
       '<div class="shelf-row">' + pick.map(function (p, i) { return '<div class="shelf-item s' + i + '">' + K.art(p.art) + '</div>'; }).join('') + '</div>' +
       '<div class="shelf-board"></div>' + sleepingCat() +
