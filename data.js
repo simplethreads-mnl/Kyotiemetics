@@ -2,7 +2,7 @@
    Everything lives in localStorage so the shop and the owner view share it. */
 (function () {
   'use strict';
-  var KEY = 'kyo-demo-v3';
+  var KEY = 'kyo-demo-v4';
   var MAX_PRODUCTS = 30;
   var INK = '#4a3b4f';
 
@@ -340,8 +340,10 @@
     ['Mushroom Spoon', 'spoon', 80, 35, 8, 0, { kind: 'mushspoon', body: '#d8262f', accent: '#e8606a' }, 0, 'Red polka-dot mushroom cap with a white stem handle.']
   ];
 
-  /* Product mockups made from her own photos. p11's photo is cut off at the screen edge, so it keeps the drawing. */
-  var NO_PHOTO = { p11: 1 };
+  /* Product mockups made from her own photos (images/products/<id>.jpg).
+     The Santa Scarf Cat Mug (p11) is left out: its only photo is cut off at the screen edge.
+     Remove it from SKIP once she sends a new photo. */
+  var SKIP = { p11: 1 };
 
   function seed() {
     var r = rng(20261122);
@@ -349,8 +351,8 @@
       var a = Object.assign({ body: '#fbf6ef', accent: '#f29ab8' }, p[6]);
       if (!a.motif) a.motif = 'none';
       var pid = 'p' + (i + 1);
-      return { id: pid, name: p[0], cat: p[1], price: p[2], cost: p[3], stock: p[4], disc: p[5], art: a, gift: !!p[7], desc: p[8], photo: NO_PHOTO[pid] ? null : 'images/products/' + pid + '.jpg' };
-    });
+      return { id: pid, name: p[0], cat: p[1], price: p[2], cost: p[3], stock: p[4], disc: p[5], art: a, gift: !!p[7], desc: p[8], photo: 'images/products/' + pid + '.jpg' };
+    }).filter(function (p) { return !SKIP[p.id]; });
     var now = Date.now(), DAY = 864e5, orders = [];
     var names = ['Bea', 'Camille', 'Joanna', 'Trish', 'Mika', 'Andrea', 'Pia', 'Rhea', 'Kat', 'Nicole', 'Jas', 'Lara', 'Gelo', 'Maan'];
     for (var o = 0; o < 26; o++) {
@@ -389,7 +391,7 @@
       { id: 'e6', date: month(38), item: 'Lalamove to mall pick-up', cat: 'Delivery', amount: 240 }
     ];
     return {
-      v: 3, products: products, orders: orders, expenses: expenses, nextOrder: 1027, nextProduct: 22,
+      v: 4, products: products, orders: orders, expenses: expenses, nextOrder: 1027, nextProduct: 22,
       settings: {
         sale: { on: false, pct: 15, label: 'Payday sale' },
         codes: [{ code: 'COFFEE10', pct: 10, on: true }, { code: 'KYOTIE15', pct: 15, on: true }, { code: 'XMAS20', pct: 20, on: false }],
@@ -402,7 +404,7 @@
   }
 
   function load() {
-    try { var s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 3) return s; } catch (e) {}
+    try { var s = JSON.parse(localStorage.getItem(KEY)); if (s && s.v === 4) return s; } catch (e) {}
     return seed();
   }
   function save(s) { try { localStorage.setItem(KEY, JSON.stringify(s)); } catch (e) {} }
