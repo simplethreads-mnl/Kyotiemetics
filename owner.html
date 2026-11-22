@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Owner view · Kyotiemics (concept demo)</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#fff7f1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 26 L18 8 L28 20Z M50 26 L46 8 L36 20Z' fill='%23b79ce8'/%3E%3Ccircle cx='32' cy='36' r='22' fill='%23b79ce8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="owner.css">
+</head>
+<body class="owner">
+<div class="demo-bar">
+  <span>Owner view demo · in the real shop this page sits behind a login</span>
+  <a href="./">← Back to the shop</a>
+</div>
+<header class="o-top">
+  <a class="logo" href="./" aria-label="Kyotiemics shop">
+    <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M13 28 L17 7 L29 21Z M51 28 L47 7 L35 21Z" fill="#b79ce8" stroke="#9c7fd6" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="37" r="22" fill="#efe7fc" stroke="#b79ce8" stroke-width="3"/><circle cx="24" cy="36" r="3" fill="#4a3b4f"/><circle cx="40" cy="36" r="3" fill="#4a3b4f"/><path d="M29 42 q1.5 2 3 0 q1.5 2 3 0" stroke="#4a3b4f" stroke-width="2" fill="none" stroke-linecap="round"/></svg></span>
+    <span class="logo-word">kyotiemics</span><span class="o-badge">owner</span>
+  </a>
+  <button class="btn btn-ghost o-reset" id="resetDemo">Reset demo</button>
+</header>
+<nav class="tabs" role="tablist" aria-label="Owner sections">
+  <button role="tab" data-tab="overview">Overview</button>
+  <button role="tab" data-tab="orders">Orders <b class="pill" id="pendingPill"></b></button>
+  <button role="tab" data-tab="products">Products</button>
+  <button role="tab" data-tab="discounts">Discounts</button>
+  <button role="tab" data-tab="accounting">Accounting</button>
+</nav>
+<main class="o-main" id="panel" role="tabpanel"></main>
+
+<dialog class="modal o-modal" id="pedit" aria-labelledby="peTitle">
+  <button class="icon-btn modal-x" data-close aria-label="Close">✕</button>
+  <div id="peBody"></div>
+</dialog>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="owner.js"></script>
+</body>
+</html>

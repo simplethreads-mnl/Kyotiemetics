@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kyotiemics · cute ceramics (concept demo)</title>
+<meta name="description" content="Concept demo shop for Kyotiemics: cute, chibi-style ceramic mugs, spoons and cottage cups from Taguig. Sample products, no real payments.">
+<meta property="og:title" content="Kyotiemics · cute ceramics (concept demo)">
+<meta property="og:description" content="Cute ceramics for your daily coffee corner. A concept shop with cart, GCash checkout and an owner view.">
+<meta name="theme-color" content="#fff7f1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cpath d='M14 26 L18 8 L28 20Z M50 26 L46 8 L36 20Z' fill='%23f29ab8'/%3E%3Ccircle cx='32' cy='36' r='22' fill='%23f29ab8'/%3E%3Ccircle cx='24' cy='34' r='3' fill='%234a3b4f'/%3E%3Ccircle cx='40' cy='34' r='3' fill='%234a3b4f'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body class="shop">
+<div class="demo-bar">
+  <span>Concept demo for Kyotiemics · sample products and prices · no real payments</span>
+  <a href="owner">Owner view →</a>
+</div>
+
+<header class="top">
+  <a class="logo" href="#" aria-label="Kyotiemics home">
+    <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 64 64"><path d="M13 28 L17 7 L29 21Z M51 28 L47 7 L35 21Z" fill="#f29ab8" stroke="#e57fa3" stroke-width="3" stroke-linejoin="round"/><circle cx="32" cy="37" r="22" fill="#fde2ea" stroke="#f29ab8" stroke-width="3"/><circle cx="24" cy="36" r="3" fill="#4a3b4f"/><circle cx="40" cy="36" r="3" fill="#4a3b4f"/><path d="M29 42 q1.5 2 3 0 q1.5 2 3 0" stroke="#4a3b4f" stroke-width="2" fill="none" stroke-linecap="round"/><ellipse cx="18" cy="42" rx="4" ry="2.4" fill="#f27fa5" opacity=".5"/><ellipse cx="46" cy="42" rx="4" ry="2.4" fill="#f27fa5" opacity=".5"/></svg></span>
+    <span class="logo-word">kyotiemics</span>
+  </a>
+  <nav class="top-nav" aria-label="Main">
+    <a href="#shop">Shop</a>
+    <a href="#how">How to order</a>
+    <a href="#about">About</a>
+  </nav>
+  <button class="cart-btn" id="cartBtn" aria-label="Open cart">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 8h14l-1.2 11.2a2 2 0 0 1-2 1.8H8.2a2 2 0 0 1-2-1.8L5 8Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8V6.5a3 3 0 0 1 6 0V8" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+    <span>Cart</span>
+    <b class="cart-count" id="cartCount">0</b>
+  </button>
+</header>
+
+<div class="sale-ribbon" id="saleRibbon" hidden></div>
+
+<main>
+  <section class="hero">
+    <div class="hero-text">
+      <p class="eyebrow">ceramics na cute · Taguig</p>
+      <h1>Cute ceramics for your daily coffee corner</h1>
+      <p class="lead">Handpicked mugs, spoons and little cottage cups, a mix of brand new pieces and mall pull-outs. Pay with GCash, and we wrap every order extra safe.</p>
+      <div class="hero-cta">
+        <a class="btn btn-pink" href="#shop">Browse the shelf</a>
+        <a class="btn btn-ghost" href="#shop" data-filter="gift">Gift picks</a>
+      </div>
+    </div>
+    <div class="hero-shelf" id="heroShelf" aria-hidden="true"></div>
+  </section>
+
+  <ul class="perks" aria-label="Why shop here">
+    <li><span class="perk-ic">✿</span><span><b>Handpicked</b> brand new and mall pull-out pieces</span></li>
+    <li><span class="perk-ic gc">G</span><span><b>GCash</b> checkout, and stock updates on its own</span></li>
+    <li><span class="perk-ic">❒</span><span><b>Wrapped safe</b> in bubble wrap and fragile tape</span></li>
+  </ul>
+
+  <section class="catalogue" id="shop">
+    <div class="cat-head">
+      <h2>The shelf</h2>
+      <p class="muted" id="countNote"></p>
+    </div>
+    <div class="controls">
+      <div class="chips" id="chips" role="group" aria-label="Filter by type"></div>
+      <div class="tools">
+        <label class="search"><span class="sr">Search</span><input id="q" type="search" placeholder="Search cat, bunny, spoon…" autocomplete="off"></label>
+        <label class="sort"><span class="sr">Sort</span>
+          <select id="sort">
+            <option value="feat">Featured</option>
+            <option value="low">Price: low to high</option>
+            <option value="high">Price: high to low</option>
+            <option value="sale">On sale first</option>
+          </select>
+        </label>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Nothing matches that yet. Try another word.</p>
+  </section>
+
+  <section class="how" id="how">
+    <h2>How to order</h2>
+    <ol class="steps">
+      <li><b>Add to cart</b><span>Pick your pieces. Buy 3 or more and you get a bundle discount.</span></li>
+      <li><b>Pay with GCash</b><span>Scan the QR, then type the reference number so we can match your payment.</span></li>
+      <li><b>We pack and ship</b><span>Lalamove in Metro Manila, J&amp;T for provinces, or pick up in Taguig.</span></li>
+    </ol>
+  </section>
+
+  <section class="about" id="about">
+    <div class="about-cats" aria-hidden="true" id="aboutCats"></div>
+    <div>
+      <h2>A small shop with rescue cats behind it</h2>
+      <p>Kyotiemics started as a way to pay for food and vet visits for a few rescue cats. Every mug you take home helps keep them fed. Thank you for supporting a small business.</p>
+      <p class="muted small">Placeholder copy written from the owner's own post. She would write the final version.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p><b>kyotiemics</b> · ceramics na cute · Taguig, Philippines</p>
+  <p>Instagram &amp; Threads: <a href="https://www.instagram.com/kyotiemics/" rel="noopener" target="_blank">@kyotiemics</a></p>
+  <p class="muted small">Concept demo. Product drawings are placeholders for the shop's real photos. Prices and stock are samples. No payments are processed.</p>
+</footer>
+
+<!-- cart drawer -->
+<div class="scrim" id="scrim" hidden></div>
+<aside class="drawer" id="drawer" aria-label="Cart" aria-hidden="true" inert>
+  <div class="drawer-head">
+    <h2>Your cart</h2>
+    <button class="icon-btn" id="closeCart" aria-label="Close cart">✕</button>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-foot" id="cartFoot"></div>
+</aside>
+
+<!-- product view -->
+<dialog class="modal" id="pview" aria-labelledby="pvName">
+  <button class="icon-btn modal-x" data-close aria-label="Close">✕</button>
+  <div class="pview" id="pviewBody"></div>
+</dialog>
+
+<!-- checkout -->
+<dialog class="modal checkout" id="checkout" aria-labelledby="coTitle">
+  <button class="icon-btn modal-x" data-close aria-label="Close">✕</button>
+  <div id="coBody"></div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="data.js"></script>
+<script src="shop.js"></script>
+</body>
+</html>
