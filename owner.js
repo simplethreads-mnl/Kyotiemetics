@@ -142,7 +142,7 @@
       '<label class="upload">Photo<input type="file" name="photo" accept="image/*"></label>' +
       (draft.photo ? '<button type="button" class="linkish" data-act="nophoto">Remove photo</button>' : '') +
       '<details' + (draft.photo ? '' : ' open') + '><summary>Placeholder drawing</summary>' +
-      '<label>Shape<select name="kind">' + opts(['cottage', 'mug', 'spoon', 'set', 'bowl', 'plate'], draft.art.kind) + '</select></label>' +
+      '<label>Shape<select name="kind">' + opts(['mug', 'cottage', 'beret', 'eggplant', 'bearband', 'luckycat', 'catprint', 'doodle', 'dragon', 'ripple', 'bundle', 'mushspoon', 'spoon', 'set', 'bowl', 'plate'], draft.art.kind) + '</select></label>' +
       '<label>Design<select name="motif">' + opts(MOTIFS, draft.art.motif) + '</select></label>' +
       '<p class="lbl">Glaze</p>' + swatches('body', COLORS, draft.art.body) +
       '<p class="lbl">Accent</p>' + swatches('accent', ACCENTS, draft.art.accent) +
